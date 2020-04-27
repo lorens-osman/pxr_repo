@@ -1,0 +1,37 @@
+/* ============
+
+    HEADER START
+
+   =========== */
+
+nav{
+    transition:height 550ms ease-in-out;
+    padding: pxr(10);
+    margin-bottom: pxr(10);
+    background-color: $blueOne;
+    box-shadow: 0 0 pxr(10) pxr(1) $blueOne;
+    ul{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        li{
+        
+            &:first-of-type{
+                margin-left: 0;
+            }
+            a{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: pxr(10);
+            }
+        }
+    }
+}
+/* ============
+
+    HEADER END
+
+   =========== */

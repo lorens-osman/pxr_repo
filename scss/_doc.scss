@@ -1,0 +1,228 @@
+/* ============
+
+    DOC START
+
+   =========== */
+
+.doc{
+    margin-top: pxr(70);
+    position: relative;
+   
+    
+    >h1{
+            
+        position: absolute;
+        background-color: $bgColor;
+        box-shadow:2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+        border: 1px solid $bgColor;
+        padding: pxr(4 0);
+        top: pxr(-56);
+        left: pxr(20);
+        width: pxr(200);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.5;
+        &::after{
+            content: "\f0d7";
+            font-family: FontAwesome;
+            display: block;
+            color:  $bgColor;
+            margin-left: pxr(5);
+            position: absolute;
+            bottom: pxr(-12);
+            left:46%;
+            transform: translatex(-50% );
+        }
+        .fa{
+            display: block;
+            margin-top: pxr(2);
+            margin-left: pxr(5);
+        }
+    }
+     // --------------global styling ------------
+    .px_tp_rem,.dir_sen,.direction,.float,.dir_attr,.fx,.units,.fx_units,.install,.about{
+        padding: pxr(10);
+        background-color: $blueOne;
+        box-shadow: 0 0 pxr(10) pxr(1) $blueOne;
+        margin-bottom: pxr(10);
+        position: relative;
+        h1{
+            
+            position: absolute;
+            background-color: $blueOne;
+            border: 1px solid $bgColor;
+            padding: pxr(4 0);
+            top: -17px;
+            left: 20px;
+            width: pxr(200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.5;
+            &::after{
+                content: "\f0d7";
+                font-family: FontAwesome;
+                display: block;
+                color:  $bgColor;
+                margin-left: pxr(5);
+                position: absolute;
+                bottom: pxr(-12);
+                left:46%;
+                transform: translatex(-50% );
+            }
+        }
+        .wraper{
+            overflow: hidden;
+            margin: pxr(20 0);
+            >p:first-of-type{
+                margin-bottom: pxr(10);
+            }
+            .sass_input_con{
+                margin-bottom: pxr(8);
+                >p:not(:first-of-type){
+                    margin-left: pxr(5);
+                    padding-left: pxr(5);
+                    border-left: 1px dotted  $bgColor;
+                }
+                .sass_input{
+                    margin-bottom: pxr(5);
+                    &::after{
+                        content: "\f090";
+                        color: $textRed;
+                        font-family: FontAwesome;
+                        display: inline-block;
+                        margin-left: pxr(5);
+                    }
+                }
+            }
+            .css_output_con{
+                margin-bottom: pxr(8);
+                >p:not(:first-of-type){
+                    margin-left: pxr(5);
+                    padding-left: pxr(5);
+                    border-left: 1px dotted  $bgColor;
+                }
+                .css_output{
+                    margin-bottom: pxr(5);
+                    &::after{
+                        content: "\f08b";
+                        color: $textGreen;
+                        font-family: FontAwesome;
+                        display: inline-block;
+                        margin-left: pxr(5);
+                    }
+                }
+            }
+            pre{
+                white-space: pre-line; 
+                margin-left: pxr(5);
+                padding-left: pxr(5);
+                border-left: 1px dotted  $bgColor;
+            }
+        }
+        
+        
+    }
+
+    // -----------indivdual styling -------------
+
+    //.px_tp_rem section
+    
+
+    // install section
+    .install{
+        margin-top: pxr(60);
+        h1{
+            background-color: $bgColor;
+            box-shadow:2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+            .fa{
+                display: block;
+                margin-top: pxr(2);
+                margin-left: pxr(5);
+            }
+        }
+        p:not(:first-of-type){
+            margin-bottom: pxr(10);
+        }
+    }  
+
+    // about section
+    .about{
+        h1{
+            background-color: $bgColor;
+            box-shadow:2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+            .fa{
+                display: block;
+                margin-top: pxr(2);
+                margin-left: pxr(5);
+            }
+        }
+        position: relative;
+        text-align: center;
+        margin-top: pxr(100);
+        padding-top: pxr(40);
+        .con{
+            position: relative;
+            width: pxr(100);
+            border-radius: 50%;
+            left: 50%; 
+            transform: translateX(-50%);
+            .imag_con{
+                width:100%;
+                overflow: hidden;
+                border-radius: 50%;
+                img{
+                    object-fit: cover;
+                }
+                
+            }
+            &::before{
+                content: "";
+                border-radius: 50%;
+                width: 90%;
+                height: 90%;
+                border: 16px solid rgba(128, 128, 128, 0.459);
+                display: block;
+                position: absolute;
+                top:pxr(-12);
+                left:pxr(-11);
+                z-index: -1;
+                -webkit-animation: pulsate 3s ease-out ;
+                animation: pulsate 4s ease-out;
+                animation-iteration-count: infinite;
+            }
+            p:not(:first-of-type){
+                margin-bottom: pxr(10);
+            }
+        }
+        .wraper{
+            p{
+                &:first-of-type{
+                    font-family:$noorehiraRegular ;
+                    font-size: pxr(40);
+                }
+                &:last-of-type{
+                    font-family: $lemon;
+                    font-size: pxr(15);
+                    margin-bottom: pxr(8);
+                }
+            }
+            .fa{
+                font-size: pxr(20);
+                margin-bottom: pxr(3);
+            }
+        }
+
+        
+    }     
+    
+}
+
+
+
+/* ============
+
+    DOC END
+
+   =========== */

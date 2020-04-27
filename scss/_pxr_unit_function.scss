@@ -1,0 +1,302 @@
+//****************** px to rem function 
+@function px-rem($pxValue){
+    $newNumber:number($pxValue);//convert from string to number
+    $rem : $newNumber /16;
+    @return $rem+rem;
+}
+
+
+//****************** String to Number function
+// Thanks Hugo!
+@function number($value) {
+    @if type-of($value) == 'number' {
+        @return $value;
+    }@else if type-of($value) != 'string' {
+        $_: log('Value for `to-number` should be a number or a string.');
+    }
+    $result: 0;
+    $digits: 0;
+    $minus: str-slice($value, 1, 1) == '-';
+    $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+    @for $i from if($minus, 2, 1) through str-length($value) {
+        $character: str-slice($value, $i, $i);
+        @if not (index(map-keys($numbers), $character) or $character == '.') {
+        @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+        }
+        @if $character == '.' {
+            $digits: 1; 
+        } @else if $digits == 0 {
+            $result: $result * 10 + map-get($numbers, $character);  
+        } @else {
+            $digits: $digits * 10;
+            $result: $result + map-get($numbers, $character) / $digits;
+        }
+    }
+    @return if($minus, -$result, $result);
+}
+
+
+//****************** Left to Right or vice versa function START
+@function leftToRight($textString ,$dir:""){
+    $texto :#{$textString};
+    @if $texto =="rtl" or $texto =="ltr" or $texto =="left" or $texto =="right" {
+        @if  $texto =="left"{
+            @if variable-exists($name: direction) {
+                @if $dir == "" or $dir == "ch"{
+                    @if $direction =="ltr"{
+                        $texto:"left";
+                        @return unquote($texto);
+                    }@else if $direction =="rtl"{
+                        $texto:"right";
+                        @return unquote($texto);
+                    }
+                }@else if $dir =="fx"{
+                    $texto:"left";
+                    @return unquote($texto);
+                }
+            }@else{
+                $texto:"left";
+                @return unquote($texto);
+            }
+        }@else if $texto =="right"{
+            @if variable-exists($name: direction) {
+                @if $dir == "" or $dir == "ch"{
+                    @if $direction =="ltr"{
+                        $texto:"right";
+                        @return unquote($texto);
+                    }@else if $direction =="rtl"{
+                        $texto:"left";
+                        @return unquote($texto);
+                    }
+                }@else if $dir =="fx"{
+                    $texto:"right";
+                    @return unquote($texto);
+                }
+            }@else{
+                $texto:"right";
+                @return unquote($texto);
+            }
+        }@else if $texto =="rtl" {
+            @if variable-exists($name: direction) {
+                @if $dir == "" or $dir == "ch"{
+                    @if $direction =="ltr"{
+                        $texto:"rtl";
+                        @return unquote($texto);
+                    }@else if $direction =="rtl"{
+                        $texto:"ltr";
+                        @return unquote($texto);
+                    }
+                }@else if $dir =="fx"{
+                    $texto:"rtl";
+                    @return unquote($texto);
+                }
+            }@else{
+                $texto:"rtl";
+                @return unquote($texto);
+            }
+        }@else if $texto =="ltr" {
+            @if variable-exists($name: direction) {
+                @if $dir == "" or $dir == "ch"{
+                    @if $direction =="ltr"{
+                        $texto:"ltr";
+                        @return unquote($texto);
+                    }@else if $direction =="rtl"{
+                        $texto:"rtl";
+                        @return unquote($texto);
+                    }
+                }@else if $dir =="fx"{
+                    $texto:"ltr";
+                    @return unquote($texto);
+                }
+            }@else{
+                $texto:"ltr";
+                @return unquote($texto);
+            }
+        }
+    }@else{
+        @return $texto;
+    }
+}
+
+
+
+// ****************** PXR function STRART
+@function pxr($texto  , $unit :"pxr" , $dir:""){
+    @if type-of($texto)=="string"{
+        @if $unit == "rtl" or $unit == "ltr" or $unit == "fx" or $unit == "ch"{
+            $new_txt :leftToRight($texto,$unit); 
+            @return $new_txt;
+        }@else {
+            $new_txt :leftToRight($texto); 
+            @return $new_txt;
+        }       
+    }@else if type-of($value: direction)!="srting"{
+        $text :#{$texto};//form number to text to slice it
+        $top:""; $right:""; $bottom:""; $left:"";
+        @for $i from 1 through 4{//slicing the TOP,RIGHT,BOTTOM,LEFT values from the $text
+            $slice:"";
+            $lenth :str-length($text);
+            $firstSpaceIndex : str-index($text," ");
+            /// TOP 
+            @if ($i == 1 ) {
+                @if not $firstSpaceIndex { // if  null = if no space afetr top value
+                    @if str-length($text) > 0 {
+                        $top :$text;
+                        $text:"";
+                    }@else {
+                        $top:null;
+                    }
+                }@else{
+                    @if str-length($text) > 1 { //if the rest of text bigger than 2 (space + at least one letter)
+                        $slice:str-slice($text,0,$firstSpaceIndex - 1);
+                        $text:str-slice($text, $firstSpaceIndex + 1,  $lenth);
+                        $top :$slice;
+                    }@else { //true if the rest of text is just space
+                        $top:null 
+                    }
+                }
+            }
+            /// RIGHT 
+            @if ($i == 2 ) {
+                @if not $firstSpaceIndex { // if  null = if no space afetr right value
+                    @if str-length($text) > 0 {
+                        $right :$text;
+                        $text:"";
+                    }@else {
+                        $right:null;
+                    }
+                }@else{
+                    @if str-length($text) > 1 { //if the rest of text bigger than 2 (space + at least one letter)
+                        $slice:str-slice($text,0,$firstSpaceIndex - 1);
+                        $text:str-slice($text, $firstSpaceIndex + 1,  $lenth);
+                        $right :$slice;
+                    }@else { //true if the rest of text is just space
+                        $right:null 
+                    }
+                }
+            }
+            /// BOTTOM 
+            @if ($i == 3 ) {
+                @if not $firstSpaceIndex { // if  null = if no space afetr bottom value
+                    @if str-length($text) > 0 {
+                        $bottom :$text;
+                        $text:"";
+                    }@else {
+                        $bottom:null;
+                    }
+                }@else{
+                    @if str-length($text) > 1 { //if the rest of text bigger than 2 (space + at least one letter)
+                        $slice:str-slice($text,0,$firstSpaceIndex - 1);
+                        $text:str-slice($text, $firstSpaceIndex + 1,  $lenth);
+                        $bottom :$slice;
+                    }@else { //true if the rest of text is just space
+                        $bottom:null 
+                    }
+                }
+            }
+            /// LEFT 
+            @if ($i ==4 ) {
+                @if not $firstSpaceIndex { // if  null = if no space afetr left value
+                    @if str-length($text) > 0 {
+                        $left :$text;
+                    }@else {
+                        $left:null;
+                    }
+                }@else{
+                    @if str-length($text) > 1 { //if the rest of text bigger than 2 (space + at least one letter)
+                        $slice:str-slice($text,0,$firstSpaceIndex - 1);
+                        $text:str-slice($text, $firstSpaceIndex + 1,  $lenth);
+                        $left :$slice;
+                    }@else { //true if the rest of text is just space
+                        $left:null 
+                    }
+                }
+            }
+        }
+        @if $unit =="px" or $unit =="rem" or $unit =="vh" or $unit =="vw" or $unit =="%"{  
+            @if not $top {
+                $top :"";
+            }@else{
+                $top:$top+$unit;
+            }
+            @if not $right {
+                $right :"";
+            }@else{
+                $right:$right+$unit;
+            }
+            @if not $bottom {
+                $bottom :"";
+            }@else{
+                $bottom:$bottom+$unit;
+            }
+            @if not $left {
+                $left :"";
+            }@else{
+                $left:$left+$unit;
+            }
+        } @else if $unit =="ltr" or $unit =="rtl" or $unit =="ch" or $unit =="fx" {
+                $dir:$unit;
+                @if not $top {
+                    $top :"";
+                }@else{
+                    $top:px-rem($top);
+                }
+                @if not $right {
+                    $right :"";
+                }@else{
+                    $right:px-rem($right);
+                }
+                @if not $bottom {
+                    $bottom :"";
+                }@else{
+                    $bottom:px-rem($bottom);
+                }
+                @if not $left {
+                    $left :"";
+                }@else{
+                    $left:px-rem($left);
+                }
+        }@else {  // just convert value from px to rem 
+            $dir:"" ;
+            @if not $top {
+                $top :"";
+            }@else{
+                $top:px-rem($top);
+            }
+            @if not $right {
+                $right :"";
+            }@else{
+                $right:px-rem($right);
+            }
+            @if not $bottom {
+                $bottom :"";
+            }@else{
+                $bottom:px-rem($bottom);
+            }
+            @if not $left {
+                $left :"";
+            }@else{
+                $left:px-rem($left);
+            }
+        }
+        @if variable-exists($name: direction) {// the $dir variable value if there is $direction variable.
+            @if $dir == "" or $dir =="ch"{ 
+                $dir:$direction;
+            }@else{
+                $dir:$dir;
+            }
+        }@else{ // the $dir variable value if there is NOT $direction variable.
+            $dir:$dir;
+        }
+        @if $dir == "rtl" {// processing the $dir variable after final assignment.
+            @if $left ==""{// helping if there just three values .
+                @return  #{$top} #{$right}  #{$bottom} #{$left}  ;
+            }@else{
+                @return  #{$top} #{$left}  #{$bottom}  #{$right}
+            };
+        }@else{
+            @return  #{$top} #{$right} #{$bottom}  #{$left}  ;
+        }
+    } 
+}
+

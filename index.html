@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pxr_unit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"> 
+</head>
+<body>
+    <!-- ! HEADER START -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">download<i class="fa fa-download fa-fw"></i></a></li>
+                <li><a href="#doc">documentation<i class="fa fa-book fa-fw"></i></a></li>
+                <li><a href="#install">installation<i class="fa fa-cogs fa-fw"></i></a></li>
+                <li><a href="#">repo<i class="fa fa-github-alt fa-fw"></i></a></li>
+                <li><a href="#about">about<i class="fa fa-user fa-fw"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ! HEADER END -->
+
+    <!-- ! INTRO START -->
+    <section class="intro">
+        <h1>pxr<span>()</span>;</h1>
+        <p >a Sass function to convert px to rem with direction sensitivity</p>
+        
+        <div class="download">
+            <a href="pxr_unit_scss_file/_pxr_unit_function.rar">Download 1.83KB <i class="fa fa-download fa-fw"></i></a>
+            <a href="#">Dowload with guide 655KB <i class="fa fa-download fa-fw"></i></a>
+        </div>
+        <div class="element_con">
+            <span class="element"></span>
+        </div>
+        
+    </section>
+    <!-- ! INTRO END -->
+     
+    <!-- ! DOC  START -->
+    <section class="doc">
+        
+        <h1>PXR Documentation <i class="fa fa-book fa-fw"></i></h1>
+        <!-- * px to rem START -->
+        <section id="doc" class="px_tp_rem">
+          
+            <h1>convert px to rem</h1>
+            <div class="wraper">
+                <p>you can convert values from px to rem easily,just type the px value between brackets.</p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p>height:&nbsp;pxr(32);</p>
+                    <p>margin:&nbsp;pxr(8 16 8 32);</p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output</p>
+                    <p>height:&nbsp;2rem;</p>
+                    <p>margin:&nbsp;0.5rem&nbsp;1rem&nbsp;0.5rem&nbsp;2rem;</p>
+                </div>
+            </div>
+        </section>
+        <!-- * px to rem END -->
+
+        <!-- * Directions sensitivity START -->
+        <section class="dir_sen">
+            <h1>PXR Directions sensitivity</h1>
+            <div class="wraper">
+                <p>pxr is sesitive to directions,set $direction variable to ltr or rtl in your sass file,and the function will match the directions in css file output.</p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p>
+                        <pre>
+                        $direction :ltr;
+                        body{
+                            height : pxr(32);
+                            margin : pxr(8 16 8 32);
+                            padding: pxr(8 16);
+                        }
+                        </pre>
+                    </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p>
+                        <pre>
+                            body {
+                                height : 2rem   ;
+                                margin : 0.5rem 1rem 0.5rem 2rem;
+                                padding: 0.5rem 1rem  ;
+                              }  
+                        </pre>
+                    </p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p>
+                        <pre>
+                            body {
+                                height : 2rem   ;
+                                margin : 0.5rem 2rem 0.5rem 1rem;
+                                padding: 0.5rem 1rem  ;
+                              }
+                        </pre>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- * Direction sensitivity END -->
+
+
+        <!-- *float  START -->
+        <section class="float">
+            <h1>PXR with Floats</h1>
+            <div class="wraper">
+                <p>you can also set floats property with pxr.</p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p> float: pxr(left); </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p> float: left; </p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p> float: right; </p>
+                </div>
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p> float: pxr(right); </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p> float: right; </p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p> float: left; </p>
+                </div>
+            </div>
+        </section>
+        <!-- *float  END -->
+
+        <!-- *DIRECTION ATRIBUTE  START -->
+        <section class="dir_attr">
+            <h1>CSS Direction Property</h1>
+            <div class="wraper">
+                <p>pxr works with css direction property too. </p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p> direction: pxr(ltr); </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p> direction: ltr; </p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p> direction: rtl; </p>
+                </div>
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p> direction: pxr(rtl); </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p> direction: rtl; </p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p> direction: ltr; </p>
+                </div>
+            </div>
+        </section>
+        <!-- *DIRECTION ATRIBUTE  END -->
+
+        <!-- *Fixed START -->
+        <section class="fx">
+            <h1>PXR Fixed Directions</h1>
+            <div class="wraper">
+                <p>to fix a css's property direction and make it insenitive to $direction variable,you can set 'fx' parameter.</p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p>
+                        <pre>
+                            $direction :rtl;
+                            body{
+                            
+                                //with out fx parametr
+                                float&nbsp;&nbsp;&nbsp;&nbsp;:  pxr(left);
+                                margin&nbsp;&nbsp;&nbsp;:    pxr(8 16 8 32);
+                                padding&nbsp;&nbsp;:   pxr(8 16 32);
+                                direction: pxr(ltr);
+                            
+                                //with fx parameter
+                                float&nbsp;&nbsp;&nbsp;&nbsp;:     pxr(left , fx );
+                                margin&nbsp;&nbsp;&nbsp;:    pxr(8 16 8 32 , fx );
+                                padding&nbsp;&nbsp;:   pxr(8 16 32 , fx );
+                                direction: pxr(ltr , fx );
+                            }                            
+                        </pre>
+                    </p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output </p>
+                    <p>
+                        <pre>
+                            body {
+
+                                //with out fx parametr
+                                  float&nbsp;&nbsp;&nbsp;&nbsp;: right;
+                                  margin&nbsp;&nbsp;&nbsp;: 0.5rem 2rem 0.5rem 1rem;
+                                  padding&nbsp;&nbsp;: 0.5rem 1rem 2rem ;
+                                  direction: rtl;
+                                
+                                //with fx parameter
+                                  float&nbsp;&nbsp;&nbsp;&nbsp;: left;
+                                  margin&nbsp;&nbsp;&nbsp;: 0.5rem 1rem 0.5rem 2rem;
+                                  padding&nbsp;&nbsp;: 0.5rem 1rem 2rem ;
+                                  direction: ltr;
+                                }
+                        </pre>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- *Fixed  END -->
+
+         <!-- *Multi Unites START -->
+         <section class="units">
+            <h1>Using Another Unites</h1>
+            <div class="wraper">
+                <p>pxr mainly converts px to rem,but if you want to use another unites without converting values,you can do that by setting the unite parameter.</p>
+
+                <div class="sass_input_con">
+                    <p class="sass_input">Sass:input</p>
+                    <p>height&nbsp;:&nbsp;pxr(20 , vw );</p>
+                    <p>margin&nbsp;:&nbsp;pxr(8 16 8 32 , px );</p>
+                    <p>padding:&nbsp;pxr(8 16 8 , vh );</p>
+                </div>
+
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:ltr;</p>
+                    <p>height&nbsp;:&nbsp;20vw;</p>
+                    <p>margin&nbsp;:&nbsp;8px&nbsp;16px&nbsp;8px&nbsp;32px;</p>
+                    <p>padding:&nbsp;8vh&nbsp;16vh&nbsp;8vh;</p>
+                </div>
+                <div class="css_output_con">
+                    <p class="css_output">Css:output if $direction:rtl;</p>
+                    <p>height&nbsp;:&nbsp;20vw;</p>
+                    <p>margin&nbsp;:&nbsp;8px&nbsp;32px&nbsp;8px&nbsp;16px;</p>
+                    <p>padding:&nbsp;8vh&nbsp;16vh&nbsp;8vh;</p>
+                </div>
+            </div>
+        </section>
+        <!-- *Multi Unites  END -->
+
+         <!-- *Fixed Multi Unites START -->
+             <section class="fx_units">
+                <h1>FX Parameter With Unites</h1>
+                <div class="wraper">
+                    <p>'fx' parameter also works with the other unites. </p>
+    
+                    <div class="sass_input_con">
+                        <p class="sass_input">Sass:input</p>
+                        <p> 
+                            <pre>
+                                $direction :rtl;
+                                body{
+                                
+                                    //with out fx parametr
+                                    margin&nbsp;:    pxr(8 16 8 32 , px);
+                                    padding:   pxr(8 16 32 , vh);
+                                    height&nbsp;:    pxr(20 ,vw);
+                                
+                                    //with fx parameter
+                                    margin&nbsp;:    pxr(8 16 8 32 , px , fx );
+                                    padding:   pxr(8 16 32 , vh , fx );
+                                    height&nbsp;:    pxr(20 ,vw , fx );
+                                }                         
+                            </pre>
+                        </p>
+                    </div>
+    
+                    <div class="css_output_con">
+                        <p class="css_output">Css:output </p>
+                        <p>
+                            <pre>
+                                body {
+
+                                    //with out fx parameter    
+                                    margin&nbsp;: 8px 32px 8px 16px;
+                                    padding: 8vh 16vh 32vh ;
+                                    height&nbsp;: 20vw   ;
+                                  
+                                  //with fx parameter
+                                    margin&nbsp;: 8px 16px 8px 32px;
+                                    padding: 8vh 16vh 32vh ;
+                                    height&nbsp;: 20vw   ;
+                                  } 
+                            </pre>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- *Fixed Multi Unites  END -->
+        <!-- ! DOC END -->
+ 
+
+        <!-- ! INSTALLATION START -->
+        <section id="install" class="install">
+            <h1>PXR Installation <i class="fa fa-gears fa-fw"></i></h1>
+            <div class="wraper">
+                <p>1.download '_pxr_unit_function.scss' file. </p>
+                <p>2.import the file to your sass project. </p>
+                <p>3.enjoy! </p>
+            </div>
+        </section>
+        <!-- ! INSTALLATION END -->
+
+        <!-- ! ABOUT START -->
+        <section id="about" class="about">
+            <h1>About <i class="fa fa-user fa-fw"></i></h1>
+            <div class="con">
+                <div class="imag_con">
+                    <a href="images/lorens_osman.jpg" target="_blank"><img src="images/lorens_osman.jpg" alt="loens_osman لورنس عثمان"></a>
+                </div>
+            </div>
+            <div class="wraper">
+                <p>لورنس أحمد عثمان</p>
+                <p>Lorens Osmen</p>
+                <div class="social">
+                    <ul>
+                        <li><a href="https://m.facebook.com/lorans.othman.7?ref=bookmarks" target="_blank"><i class="fa fa-facebook-square fa-fw"></i></a></li>
+                        <li><a href="https://twitter.com/lorans_othman" target="_blank"><i class="fa fa-twitter fa-fw"></i></a></li>
+                        <li><a href="mailto: lorans.ev@gmail.com" target="_blank"><i class="fa fa-envelope-o fa-fw"></i></a></li>
+                        <li><a href="https://github.com/lorens-osman" target="_blank"><i class="fa fa-github-alt fa-fw"></i></a></li>
+ 
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- ! ABOUT END -->
+    </section>
+
+   
+    
+    <!-- ! ABOUT START -->
+    <footer>
+        <span class="element"></span>
+    </footer>
+    <!-- ! ABOUT END -->
+
+
+
+
+    <script src="js/typed.js-master/lib/typed.js"></script> 
+    <script src="js/main.js"></script>
+
+
+
+
+</body>
+</html>

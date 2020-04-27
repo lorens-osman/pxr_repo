@@ -1,0 +1,110 @@
+/* ============
+
+    MEDIA QUERY START
+
+   =========== */
+
+// media query 560----------------------------- 
+@include mq-mn(560px){
+body{
+    display: grid;
+    grid-template-columns: pxr(100) 1fr;
+    gap: 10px;
+    grid-template-areas: 
+    "header intro"
+    "doc    doc  "
+    ;
+
+    header{
+        grid-area: header;
+        
+        nav {
+            height:100%;
+            ul{
+            height:100%;
+            flex-direction: column;
+            justify-content: space-around;
+            }
+        }
+    }
+    .intro{
+        grid-area: intro;
+        height:100%;
+        .download{
+    
+            a{
+                max-width: pxr(443);
+                margin: 0 auto;
+                margin-bottom: pxr(30);
+            }
+        }
+        
+    }
+    .doc{
+        grid-area: doc;
+    }
+    
+
+}
+}
+// media query 750----------------------------- 
+@include mq-mn(750px){
+
+    
+    .doc{
+        display:grid ;
+        grid-template-columns: 1fr 1fr ;
+        column-gap: pxr(10);
+        >h1{
+            left: 50%;
+                transform: translateX(-50%);
+        }
+        .px_tp_rem,.dir_sen,.direction,.float,.dir_attr,.fx,.units,.fx_units,.install,.about{
+            h1{
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        .install{
+            grid-column: span 2;
+            text-align: center;
+        }
+        .about{
+            grid-column: span 2;
+        }
+        
+    }
+
+
+}
+// media query 1000----------------------------- 
+@include mq-mn(1000px){
+
+    
+.doc{
+    grid-template-columns: repeat(3,1fr) ;
+    grid-template-rows: repeat(3 ,1fr);
+    
+
+    .install{
+        grid-column:span 1;
+        text-align: center;
+        margin-top: 0;
+    }
+    .about{
+        
+        grid-column:span 1;
+        margin-top: 0;
+    }
+    
+    
+}
+
+
+}
+/* ============
+
+    MEDIA QUERY END
+
+   =========== */

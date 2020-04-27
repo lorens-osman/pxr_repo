@@ -1,0 +1,63 @@
+/* ============
+
+    INTRO START
+
+   =========== */
+
+.intro{
+
+    align-items: center;
+    padding: pxr(10);
+    background-color: $blueOne;
+    box-shadow: 0 0 pxr(10) pxr(1) $blueOne;
+    margin-bottom: pxr(10);
+    text-align: center;
+    
+
+    h1{
+        font-family: $lemon;
+        color: rgba(0,0,0,0.6);
+        text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 0px -5px 35px rgba(255,255,255,0.3);
+        font-size: pxr(60);
+        margin-bottom: pxr(15);
+        span{
+            font-size: pxr(50);
+            position: relative;
+            top: pxr(-3);
+        }
+    }
+    p{
+        margin-bottom: pxr(60);
+        font-size: pxr(20);
+        font-family: $roboB;
+        font-weight: bold;
+    
+    }
+    .download{
+        
+        a{
+            display: block;
+            background-color: $bgColor;
+            margin-bottom: pxr(30);
+            padding: pxr(4);
+        }
+    }
+    .element_con{
+        margin-top: 50px;
+        margin-bottom: 30px;
+        span{
+        
+            .fa-check-circle-o{
+                color:green ;
+            }
+        }
+        
+    }
+}
+ 
+
+/* ============
+
+    INTRO END
+
+   =========== */

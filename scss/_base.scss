@@ -1,0 +1,133 @@
+@font-face {
+    font-family: JetBrainsMono-Regular;
+    src: url(../css/fonts/JetBrainsMono-Regular.ttf);
+}
+
+
+@font-face{
+    font-family: lemon;
+    src: url(../css/fonts/lemon_milk/LEMONMILK-Bold.otf);
+}
+@font-face{
+    font-family: AzerLight;
+    src: url(../css/fonts/ar/AzerLight.ttf);
+}
+@font-face {
+    font-family: AzerMedium;
+    src: url(../css/fonts/ar/AzerMedium.ttf);
+}
+@font-face {
+    font-family: HacenLinerXL;
+    src: url(../css/fonts/ar/test/HacenLinerXL.ttf);
+}
+@font-face {
+    font-family: noorehiraRegular;
+    src: url(../css/fonts/ar/test/noorehiraRegular.ttf);
+}
+@font-face {
+    font-family: roboR;
+    src: url(../css/fonts/RobotoCondensed-Regular.ttf);
+}
+@font-face {
+    font-family:roboB;
+    src: url(../css/fonts/RobotoCondensed-Bold.ttf);
+}
+//colors
+$white:#F5F7F6;
+$orang:#F4924E;
+$yellow:#FFE400;
+$bgColor:#60BDB2;
+$blueOne:#B6DDDA;
+$blueTow:#9BC5DE;
+$blueThree:#6997B1;
+
+$textGray:#2c3b44;
+$textGreen:#668360;
+$textRed:#B64866;
+$textBlue:#355C80;
+
+
+//fonts names
+$JetBrainsMono:JetBrainsMono-Regular;
+$lemon:lemon;
+$AzerLight:AzerLight;
+$AzerMedium:AzerMedium;
+$HacenLinerXL:HacenLinerXL;
+$noorehiraRegular:noorehiraRegular;
+$roboR :roboR;
+$roboB:roboB;
+
+
+// media query mixin
+@mixin mq-mn($screenSize) {
+    @media (min-width:$screenSize) {
+        @content
+    }
+}
+
+// key frames
+@-webkit-keyframes pulsate {
+    0% {
+      -webkit-transform: scale(0.8, 0.8);
+              transform: scale(0.8, 0.8);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1.0;
+    }
+    100% {
+      -webkit-transform: scale(1.1, 1.1);
+              transform: scale(1.1, 1.1);
+      opacity: 0.0;
+    }
+  }
+  @keyframes pulsate {
+    0% {
+      -webkit-transform: scale(0.6, 0.6);
+              transform: scale(0.6, 0.6);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1.0;
+    }
+    100% {
+      -webkit-transform: scale(1, 1);
+              transform: scale(1, 1);
+      opacity: 0.0;
+    }
+  }
+
+  // global styling 
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{ 
+    background-color: $bgColor;
+    font-size: pxr(10);
+    font-family: $JetBrainsMono;
+    padding: pxr(10);
+    color: $textGray;
+    a{
+        color: $textGray;
+        text-decoration: none;
+    }
+    img{
+        max-width: 100%;
+    }
+    ul{
+        list-style: none;
+    }
+    pre{
+        font-family: $JetBrainsMono;
+    }
+}
+//media query global styling
+/* @include mq-mn(560px){
+    header ,section ,footer{
+        max-width: 525px;
+        margin: 0 auto;
+    }
+} */
